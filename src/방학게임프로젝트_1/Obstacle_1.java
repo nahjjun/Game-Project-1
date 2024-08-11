@@ -17,7 +17,7 @@ public class Obstacle_1 extends JLabel {
 		this.setLocation(_x,_y);
 		this.setOpaque(true);
 		plusObstacles=0;
-		maxPlusObstacles=1000;
+		maxPlusObstacles=100;
 	}
 	
 	public void setDirection(int _d) {direction = _d;}
