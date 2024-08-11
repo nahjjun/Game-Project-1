@@ -1,5 +1,5 @@
 package 방학게임프로젝트_1;
-import java.awt.*;
+import java.awt.*; 
 import javax.swing.*;
 
 public class Menu extends JLabel{
