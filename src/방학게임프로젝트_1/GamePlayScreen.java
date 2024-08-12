@@ -34,7 +34,7 @@ public class GamePlayScreen {
 		contentPane.setFocusable(true); // KeyListener는 컴포넌트가 포커스를 받을 때만 작동하기 때문에, 이 함수로 contentPane에 포커스를 준다
 		contentPane.addKeyListener(new CharacterMoveListener(mainCharacter));
 		resetPage(); // 일정 시간마다 게임 화면을 초기화해주는 TimerTask 객체를 정의 해주는 함수
-		timer.scheduleAtFixedRate(task, 0, 3); // 0ms의 지연으로 0.003초마다 TimerTask의 run 함수를 실행해주는
+		timer.scheduleAtFixedRate(task, 0, 1000/60); // 0ms의 지연으로 0.003초마다 TimerTask의 run 함수를 실행해주는
 	}	
 	
 
@@ -91,24 +91,25 @@ public class GamePlayScreen {
     }
 	
 	// 프레임별로 게임 캐릭터 위치를 설정해주는 함수 
+    int moveRate=5; 
 	public void setCharater() {
 		int moveX = 0; // x축 방향으로 움직일 때 움직일 크기
 		int moveY = 0; // y축 방향으로 움직일 때 움직일 크기
 		switch(mainCharacter.getDirection()) {
 		case 0: // 위쪽인 경우
 			moveX = 0;
-			moveY = -1;
+			moveY = -moveRate;
 			break;
 		case 1: // 오른쪽인 경우
-			moveX = 1;
+			moveX = moveRate;
 			moveY = 0;
 			break;
 		case 2: // 아래쪽인 경우
 			moveX = 0;
-			moveY = 1;
+			moveY = moveRate;
 			break;
 		case 3: // 왼쪽인 경우
-			moveX = -1;
+			moveX = -moveRate;
 			moveY = 0;
 			break;
 		default:
@@ -131,35 +132,35 @@ public class GamePlayScreen {
 		switch(obstacles_1.get(_i).getDirection()) {
 		case 0: // 북쪽인 경우
 			moveX = 0;
-			moveY = -1;
+			moveY = -moveRate;
 			break;
 		case 1: // 북동쪽인 경우
-			moveX = 1;
-			moveY = -1;
+			moveX = moveRate;
+			moveY = -moveRate;
 			break;
 		case 2: // 동쪽인 경우
-			moveX = 1;
+			moveX = moveRate;
 			moveY = 0;
 			break;
 		case 3: // 남동쪽인 경우
-			moveX = 1;
-			moveY = 1;
+			moveX = moveRate;
+			moveY = moveRate;
 			break;
 		case 4: // 남쪽인 경우
 			moveX = 0;
-			moveY = 1;
+			moveY = moveRate;
 			break;
 		case 5: // 남서쪽인 경우
-			moveX = -1;
-			moveY = 1;
+			moveX = -moveRate;
+			moveY = moveRate;
 			break;
 		case 6: // 서쪽인 경우
-			moveX = -1;
+			moveX = -moveRate;
 			moveY = 0;
 			break;
 		case 7: // 북서쪽인 경우
-			moveX = -1;
-			moveY = -1;
+			moveX = -moveRate;
+			moveY = -moveRate;
 			break;
 		default:
 			moveX = 0;
@@ -199,4 +200,3 @@ public class GamePlayScreen {
 	}
 	
 }
-
